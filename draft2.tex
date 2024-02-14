@@ -1,0 +1,398 @@
+\documentclass[12pt,draft,a4paper]{article}
+\usepackage[authoryear]{natbib}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{caption}
+
+\usepackage{newtx}
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[noabbrev]{cleveref}
+\captionsetup[table]{labelfont=bf,
+                     labelsep=newline,
+                     singlelinecheck=false}
+
+\AtBeginDocument{\fontsize{12pt}{18pt}\selectfont}
+
+\begin{document}
+    
+\begin{titlepage}
+
+    \author{Moritz Trinkner}
+    \title{Seminar:\\ Quantitative Methoden}
+    \date{February 2024}
+\end{titlepage}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+
+\section{Introduction}
+
+\newpage
+\section{Empirical Part}
+\subsection{Introduction} 
+
+In our empirical project, we started on the task of applying the empirical strategy outlined in the paper by Ichino et al. (2014), titled "Hidden consequences of a first-born boy for mothers." This involved using our assigned dataset from Asia, specifically dated before the year 2000. Meeting these criteria, we found data for Jordan 2004 on IPUMS. The Ichino paper had revealed a significant causal effect of the first child sex on the mothers' working hours, employment status, and fertility.
+
+Jordan is a country in the heart of the Middle East and is home to approximately 11.1 million people as of the year 2023. The population reflects a diverse range of ethnic groups, with Jordanians constituting 70\% Syrian 13\% and Palestinian, and Egyptian communities each make up significant portions 7\%. In terms of religion, Jordan is predominantly Muslim, with 97.1\% Sunni Muslims of the population, while the remaining 2.9\% are orthodox Christians etc..
+
+
+\subsection{Data}
+
+Once we had our dataset, we set out to create specific key variables adjusted for our analysis. Among these variables was "first-born boy (younger 16 years old)." However, we also experienced difficulties: situations where two children shared the same age and were the oldest in the household but had different sexes resulted in all children being labeled as sex==1 (girl). To resolve this, we implemented a solution in the do.file, ensuring accuracy in our data representation.
+
+Building on the conditions outlined in the Ichino paper, we established criteria such as mothers being between 18-55 years old, the oldest child being smaller/equal 15 years old, and the first child being born between the mothers age of 18-40 years old. These limitations, provided by the authors, helped define the parameters of our analysis and ensured alignment with the Ichino study.
+
+In addition to these criteria, we went a step further by generating numerous dummy variables. These served to simplify and enhance the logical use of data in our analysis. Notable examples include the "married" dummy variable, which replaced the previous five different status categories, and the "Employed” dummy variable, simplifying the representation of employment status into a binary (0=no and 1=yes). Furthermore, we implemented an age restriction to filter out illogical values, such as ages exceeding 150.
+
+
+\subsection{Results}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[ht]
+    \caption{Descriptive Statistics}
+    \begin{tabularx}{\textwidth}{lXXXXX}
+    \hline
+                          & Mean   & Std.   & Min & Max & No. obs. \\ \hline
+    Employed              & 0.133  & 0.339  & 0   & 1   & 40,295   \\
+    Hours worked per week & 5.444  & 14.376 & 0   & 97  & 40,295   \\
+    Age                   & 30.681 & 5.829  & 18  & 55  & 40,295   \\
+    Married               & 0.976  & 0.155  & 0   & 1   & 40,295   \\
+    More than 1 child     & 0.811  & 0.391  & 0   & 1   & 40,295   \\
+    First-born boy        & 0.517  & 0.500  & 0   & 1   & 40,295   \\
+    Citizen               & 0.943  & 0.231  & 0   & 1   & 40,295   \\
+    Number of children    & 3.019  & 1.563  & 1   & 9   & 40,295   \\ \hline
+    \end{tabularx}%
+
+    Descriptive Statistics of the variables used in our analysis of mothers in Jordan in 2004. Data from IPUMS, 2020.
+    \label{tab:desc}
+    \end{table}
+
+Table 1 shows the descriptive statistics for all the variables we used in our analysis. We have 40,305 mothers in our sample.
+Noticeable values in the table are that only 13.5\% of mothers are working and accordingly the average hours worked per mother is only 5.
+The maximum working hours might seem high,
+but since only 1\% of employed mothers work more than 70 hours and there are reports of sweatshops in Jordan with up to 100h worked per week (Greenhouse and Barbaro, 2006) we deemed it plausible.
+It is worth to note here, that the working hours per week, only looking at working mothers, is 40.2.
+This suggests that part time work is almost non-existent in Jordan, in our sample less than 4\% of working mothers work less that 30 hours per week.
+This lack of part time work can partially be of an explanation of the low workforce participation of women. 
+Additionally, 97.6\% of mothers are married and 81.1\% have more than 1 child.
+All of this points to the fact that Jordan is a highly conservative and religious country with strict gender roles.
+In our sample 51.7\% of first-born kids are boys, being close to the natural sex ratio. Therefore the key identification assumption that gender of first born boy is random holds.
+    
+    
+\begin{table}[ht]
+    \caption{T-tests of mothers' characteristics on sex of the first-born child}
+    \begin{tabularx}{\textwidth}{lllll}
+        \hline
+          & \begin{tabular}[c]{@{}l@{}}Mothers with\\ first-born boys\\ (St. err.)\end{tabular} & 
+          \begin{tabular}[c]{@{}l@{}}Mothers with\\ first-born girls\\ (St. err.)\end{tabular} & 
+          \begin{tabular}[c]{@{}l@{}}Difference\\ (St. err.) \\ \end{tabular} & 
+          \begin{tabular}[c]{@{}l@{}}T-test statistic\\ (P-value) \\ \end{tabular} \\ \hline
+    Employed              & 0.134           & 0.132        & -0.002   & -0.612       \\
+                          & (0.002)         & (0.002)      & (0.003)  & (0.541)      \\
+    Hours worked per week & 5.471           & 5.417        & -0.053   & -0.371       \\
+                          & (0.100)         & (0.103)      & (0.143)  & (0.710)      \\
+    Age                   & 30.643          & 30.721       & 0.078    & 1.344        \\
+                          & (0.040)         & (0.042)      & (0.058)  & (0.179)      \\
+    Married               & 0.975           & 0.976        & 0.001    & 0.833        \\
+                          & (0.001)         & (0.001)      & (0.002)  & (0.405)      \\
+    More than 1 child     & 0.805           & 0.819        & 0.014    & 3.617        \\
+                          & (0.003)         & (0.003)      & (0.004)  & (0.000)      \\
+                          \hline
+                        \end{tabularx}
+
+                        Data of Jordan 2004, from IPUMS, 2020.
+                        \label{tab:tte}
+    \end{table}
+
+The T-Tests in Table 2 are all insignificant, except for the More than 1 child variable, which is higher for mothers with first-born girls.
+We will discuss the possible reasons for that later.
+This suggests that average characteristics are same for mothers despite gender of their first child, and gender of first-born child is exogenous.
+
+\begin{table}[ht]% not h om its own
+    \caption{First child gender, fertility and marital status of the mother}
+
+    
+    %  \noindent % otherwise the line will be too wide by \parindent
+    \begin{tabularx}{\textwidth}{lXlr}
+    
+    \hline & \\[-1.0em]
+    Hours worked per week & & Probability of working &  \\
+    \hline & \\[-1.0em]
+        sFirst-born boy          & 0.086           & First-born boy           & 0.003           \\
+        St. err.                & 0.141           & St. err.                 & 0.003           \\
+        \\[-1.0em]
+        Baseline Girl:          & 5.378           & Baseline Girl:           & 0.133           \\
+        St. err.                & 1.524           & St. err.                 & 0.036           \\
+        Percent effect          & 1.596           & Percent effect           & 2.172           \\
+        No. obs.                & 40,295          & No. obs.                 & 40,295          \\
+    \hline
+    \end{tabularx}
+
+    *p < 0.1 ; ** p < 0.05 ; *** p < 0.01 Controls: quadratic in age. Left panel the dependent variable is the number of hours worked per week in reference week. On right panel the dependent variable is a dummy equal to 1 if the person is employed and 0 otherwise. Data from IPUMS, 2020. 
+    \label{tab:work}
+    \end{table}
+
+Table 3 recreates Table 2 from Ichino et. al. (2014). It is important to note that baseline girl was created by taking the constant and adding mean of age and age squared multiplied by the respective estimators. 
+(Original values for the corresponding standard errors are -17.109 and -0.433) In the first part is a regression on hours worked per week, using first-born boy as the main explanatory variable, and controlling for a quadratic function of age. 
+The second part uses an employed dummy as the dependent variable, so that the result can be interpreted as the probability of a mother working. 
+The explanatory variables are the same as above. Equally, the effect of a first-born boy is insignificant.
+The original paper finds, coefficients of first-born boy significant and negative. In contrast, here they are small and positive, which would suggest that having first born boy increases both probability and time working. 
+But as noted, estimated effect of having a first-born boy instead of a girl in Jordan on working hours as well as employment status is insignificant. We attribute these differences to cultural specificity of Jordan.
+    
+
+\begin{table}[ht]% not h om its own
+    \caption{First child gender, fertility and marital status of the mother}
+
+    
+    %  \noindent % otherwise the line will be too wide by \parindent
+    \begin{tabularx}{\textwidth}{lXlr}
+    
+    \hline & \\[-1.0em]
+    \multicolumn{2}{l}{Probability of having more than one child}  & Probability of being married &  \\
+    \hline & \\[-1.0em]
+        First-born boy & -0.013***  & First-born boy  & 0.001   \\
+        St. err.       & 0.004      & St. err.        & 0.001   \\
+        \\[-1.0em]                                                     
+        Baseline Girl: & 0.818      & Baseline Girl:  & 0.985   \\
+        St. err.       & 0.038      & St. err.        & 0.001   \\
+        Percent effect & -1.589***  & Percent effect  & 0.082   \\
+        No. obs.       & 39,901     & No. obs.        & 39,901 \\
+    \hline
+    \end{tabularx}
+
+    *p < 0.1 ; ** p < 0.05 ; *** p < 0.01 Controls: quadratic in age. Widows excluded. (1) dummy equal to 1 if the woman is married and 0 otherwise. Data from IPUMS, 2020.
+    \label{tab:fert}
+    \end{table}
+    
+The effect of the sex of the first-born child on the probability of having more than one child as well as being married can be seen in Table 4. 
+Baseline girl is created like in Table 3. (Original Constants are -2.236 and 0.933.) 
+Following Table 3 in Ichino et. al. (2014) this section excludes widows since they don't actively opt into not being married. 
+Like in Table 3 we control for a quadratic function in age. For the first section the dummy if a mother has more than one child is used as the dependent variable. 
+Here, the probability of having more than one child is 1.3 percentage points lower for mothers having a first-born boy. 
+This result is significant at the 1\% level. In the second part, the dependent variable is a dummy being one if the mother is married. 
+The Sex of the first-born has no effect here, and since widows are excluded the baseline girl is even higher than in tables 1 and 2 with 98.5\% of women being married.
+
+\subsection{Discussion and Comparison}
+The results of the descriptive statistics for Jordan show significant differences from the original paper's findings regarding maternal employment and weekly worked hours. 
+As already mentioned, the percentage of employed mothers (employment status) in Jordan is approximately 13.4\%, and the average weekly worked hours (hours worked) are around 5.38. 
+This places the proportion of employed mothers in Jordan significantly lower than that of the countries analyzed in the original paper, (U.S., UK, Italy, and Sweden). 
+The likelihood of a mother being employed in the original paper's countries ranged from approximately 50\% to 65\% between the years 1960 and 2011. 
+Karin A. Wenger writes in the Neue Zürcher Zeitung that hardly any other country without war has as few working women as Jordan, estimating the number of non-working women at 85\% (cf. Wenger K. A., 12.08.2021), which aligns with our result of employed mothers (13.4\% employed).
+This suggests that not only mothers but women in general are scarcely employed in Jordan. 
+Furthermore, the rate of married mothers in Jordan, based on the data, is significantly higher than in the countries examined in the original paper, standing at approximately 97.55\% compared to about 67\%-86\%. 
+Like the original paper, we also examined the relationship between firstborn boys and fertility in Jordan, with results partially differing from those in the original paper.
+The authors of the original study introduced the concept of the "desire for a son” effect, claiming that mothers tend to have fewer children if their firstborn is a boy, attributed to strengthened marriages, increased maternal security, and higher fertility potentially leading to reduced labor force participation. 
+The authors emphasized the "desire for a son" effect, highlighting the need to explore maternal marital status. 
+In contrast to the original paper, our study in Jordan found that the gender of the first child had no visible influence on the marital status of mothers. 
+Almost every mother in Jordan is already married, indicating a prevailing trend possibly rooted in religious beliefs. 
+This deviation from the original results requires a reassessment of the role of cultural and religious factors in shaping family decisions in the Jordanian context. 
+Paradoxically, despite the apparent independence of marital status from the gender of the first child, our results unexpectedly confirmed the "desire for a son" effect. 
+Our data showed a significant correlation: It is less likely for mothers in Jordan to have more than one child if their firstborn is a boy. 
+
+\subsection{Limitations and Problems}
+The replication of the paper has several limitations and special notes that need to be considered.
+One of the most important issues was missing data.
+Jordan was chosen as a country in Asia after 2000's since it had the available data for most variables that were present in original paper, however, the available statistics don't contain the information about the race or ethnicity of an individual.
+Therefore, it was decided to use nationality of an individual instead of race.
+We did two regressions, where we regressed sex of first-born child on quadratic function of age, and also in second regression we included nationality as regressor. With both outputs we were assured that sex of first child is exogenous.
+
+Another problem with the dataset stems from the cultural specificity. There are many households that have more than one mother in the household.
+Since each household has designated serial number, households with more than one mother had to be dropped from the analysis which constrained the sample size significantly.
+This is stemming from the fact that there are multiple intergenerational households as well as households where a man has more than one wife.
+One of the possible explanations as of why the replication results fail to match what was found by the original paper could be the smaller and characteristically different sample.
+
+We are mindful of comparing the results of our replication to original paper. 
+The characteristic of the Jordan, being located in Asia, mainly having Muslim and conservative population, makes the results harder to compare to original findings of paper, but also opens a floor to another research opportunities.
+Therefore, we attribute most of the differences of replication to these characteristics. 
+The replication regression shows that female participation on labor market is very low regardless of sex of first child. 
+Notably, we find that women work less in Jordan.
+More importantly, the coefficient of sex of first child is small and insignificant which suggests that gender of first-born child has no effect of mothers' labor supply.
+Due to cultural characteristics of Jordan, it is more likely that other factors like culture and institutions play role in determining female labor.
+For instance, while there have been efforts to improve gender equality in Jordan, the legal and policy framework may still have areas that negatively impact women's participation in the workforce. The enforcement and effectiveness of such policies also play a role (Gauri et al., 2019).
+Jordan is a predominantly Muslim country, and interpretations of Islamic teachings may influence societal attitudes towards women's employment as traditionally women are employed in household work and not outside (Shakhatreh, 1990). 
+
+\section{Main Summary of Paper}
+% • What is the research question(s)?
+% • What is the main contribution?
+
+
+The following Section all summarizes the paper “Did the minimum wage reduce the gender wage gap in Germany?” by \citet{CALIENDO22}. It addresses the question if the minimum wage can have an effect on the gender wage gap. The reason why this effect might appear is that women are in most countries and regions disproportionally represented among low paid workers. \citep{kahn2015wage}
+This means that an increase in the minimum wage would affect women's average wages more than mens, leading to a decrease in the gender wage gap.
+The minimum wage is a national wage floor, that is binding for almost all employees. Germany is a special research case, since it was one of the last OECD countries to introduce a Minimum wage. When it was introduced in 2015 at 8.50€ it was one of the highest in the EU in terms of purchasing power parity. It affected 10\% of the workforce, and 2/3 of those affected low income workers were women.  This strong increase makes Germany a great natural experiment to observe effects of the minimum wage, in this case the effect of the gender wage gap. 
+%Short preview of results in introduction
+%Detailed OECD Data from 2014 First Decile comparison to average
+% not a panel study
+
+The effect is even more pronounced given that Germany had a above OECD average gender pay gap, which was especially strong at the first decile of the income distribution. 
+\subsection{Data}
+The Data used is from a mandatory federal statistics survey called Structure of Earnings Survey (Verdienststrukturanalyse). 
+Add number of observations or stuff like that.
+It is held every four years, so the data used is from 2014 and 2018. Because of that the data includes the first increase of the minimum wage to 8.84€ in 2017.
+%more on data and maybe transformation
+
+%Does not include gender wage gap, calculated manually.
+
+\subsection{Method}
+% • Which empirical method is used? Does it help to identify causal effects? If yes/no, why?
+% Intuitively, explain the idea of the empirical method (and provide a critical assessment of the empirical strategy)
+% How it is related to economic theory?
+
+% Discussion of control variables
+
+% Maybe explain ex
+The Method used in the paper is a difference-in-difference approach with fixed effects. Since there are no legislative differences for the federal wage in difference regions in Germany, the authors use regional differences in Germany to assign Germany to the control or treatment group.
+%Why fraction of in relation to women and not the whole workforce
+%Not dependent on gender wage gap neither on fraction of men working under the minimum wage
+%"We generate the gender wage gap at the regional level as the diﬀerence between men’s and women’s wages divided by men’s wages."
+This is followed after \citet{Card1992} who did the same in an analysis of the minimum wage in the United States. 
+They  use labor market regions to split the country in 257 different regions. 
+The fraction of women that worked below the minimum wage in 2014 in relation to all employed women is used to see how 
+strong %better word 
+the introduction of the minimum wage affects the employed women in the region. 
+\Citeauthor{CALIENDO22} call this the bite, which can be visualized by how deep the minimum wage bites into the wage distribution.
+%median bite level of 17.15%.
+The fraction for all regions is used to separate them at the median, so that regions with more than 17.15\% of women affected by the minimum wage are in the treatment group and regions below the control group.
+
+The main regression is calculated by the following equation,
+\begin{equation}\label{equ:main}
+    Gap_{j,t} = \alpha_r + \beta T_{t}^{2018} + \delta T_{t}^{2018} Bite_{j}^{2014} + \gamma X_{j,t} + \upsilon_{j,t} \textnormal{ with } t =\{2014, 2018\} 
+\end{equation}
+%Why is the bite not included? Maybe discuss at exogenety 
+
+%Strict exogeneity assumption
+where $Gap_{j,t}$ is the gender pay gap per region $j$ in the year $t$. $ \alpha$ is the the term for the fixed-effects, $T^{2018}$ is the dummy for the year 2018 and $Bite^{2014}$ the dummy taking one if the region is in the treatment group.
+The interaction term, estimated with $\delta$, is the main result of the paper, showing how the wage gap regions with a high fraction of affected women developed compared to regions with less women affected by the minimum wage introduction.
+
+\subsection{Main Result}
+% • What is the main result? And what is the implication of this finding?
+% Summarize and synthesize the results, provide relevant background information
+\begin{table}[btp] %Main Results
+    \caption{Fixed effects regressions of wage gaps at 10th percentile, 25th percentile and mean (in labour market regions).}
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lllllll}
+    \hline & \\[-1.0em]
+                              & (1)       & (2)       & (3)       & (4)       & (5)       & (6)       \\ 
+    \hline & \\[-1.0em]
+    \multicolumn{7}{c}{A: Wage Gap at p10}                                                            \\
+    \hline & \\[-1.0em]
+    Bite x 2018               & -5.228*** & -5.085*** & -4.870*** & -4.735*** & -4.550*** & -4.550*** \\
+    2018                      & -3.568*** & -4.286*** & -4.539*** & -5.419*** & -3.684    & -3.754    \\
+    GDP per capita ($t$ - 1)   &           & 0.153     & 0.152     & 0.126     & 0.147     & 0.158     \\
+    Pop. Density ($t$ - 1)     &           &           & 0.024     & 0.020     & 0.017     & 0.015     \\
+    Share of Women ($t$ - 1)   &           &           &           & -2.722    & -2.837    & -2.610    \\
+    Empl. Rate Women ($t$ - 1) &           &           &           &           & -0.412    & -0.457    \\
+    Childcare 0-2 ($t$ - 1)    &           &           &           &           &           & 0.044     \\
+    Childcare 3-5 ($t$ - 1)    &           &           &           &           &           & -0.061    \\ 
+    \hline & \\[-1.0em]
+    \multicolumn{7}{c}{B: Wage Gap at p25}                                                            \\ 
+    \hline & \\[-1.0em]
+    Bite x 2018               & -3.352*** & -2.814*** & -3.122*** & -3.111*** & -3.191*** & -3.336*** \\
+    2018                      & -1.454**  & -4.154*** & -3.792*** & -3.865**  & -4.612    & -4.079    \\
+    GDP per capita ($t$ - 1)   &           & 0.576**   & 0.578**   & 0.576**   & 0.567**   & 0.541**   \\
+    Pop. Density ($t$ - 1)     &           &           & -0.034    & -0.034    & -0.033    & -0.027    \\
+    Share of Women ($t$ - 1)   &           &           &           & -0.225    & -0.176    & 0.010     \\
+    Empl. Rate Women ($t$ - 1) &           &           &           &           & 0.178     & 0.280     \\
+    Childcare 0-2 ($t$ - 1)    &           &           &           &           &           & -0.239    \\
+    Childcare 3-5 ($t$ - 1)    &           &           &           &           &           & 0.048     \\ 
+    \hline & \\[-1.0em]
+    \multicolumn{7}{c}{C: Wage Gap at Mean}                                                           \\ 
+    \hline & \\[-1.0em]
+    Bite x 2018               & -1.609*   & -1.339    & -1.634*   & -1.684*   & -2.139**  & -2.297**  \\
+    2018                      & -2.154*** & -3.511*** & -3.163*** & -2.838*   & -7.110**  & -6.581**  \\
+    GDP per capita ($t$ - 1)   &           & 0.289     & 0.292     & 0.301     & 0.249     & 0.229     \\
+    Pop. Density ($t$ - 1)     &           &           & -0.032    & -0.031    & -0.023    & -0.018    \\
+    Share of Women ($t$ - 1)   &           &           &           & 1.006     & 1.289     & 1.662     \\
+    Empl. Rate Women ($t$ - 1) &           &           &           &           & 1.014*    & 1.092*    \\
+    Childcare 0-2 ($t$ - 1)    &           &           &           &           &           & -0.228    \\
+    Childcare 3-5 ($t$ - 1)    &           &           &           &           &           & 0.007     \\ 
+    & \\[-1.0em]
+    \hline & \\[-1.0em]
+    Observations              & 514       & 514       & 514       & 514       & 514       & 514       \\
+    Groups                    & 257       & 257       & 257       & 257       & 257       & 257       \\
+    \hline & \\[-1.0em]
+    \end{tabular}
+    
+    }
+    Source: SES 2010, 2014 and 2018, own calculations. Note: We only include eligible employees that are not employed in the public service. The subsample is identiﬁed via the variable GG2010, which is provided by the federal statistical oﬃce and which adapts the 2014 and 2018 data to the structure of the 2010 wave (FDZ, 2019).
+    \label{tab:main}
+    \end{table}
+
+
+% analysis of 10th 25th percentile and mean
+
+The Results displayed in \Cref{tab:main} are calculated at different points in the distribution. Panel A examines the effects at the 10th percentile of the wage distribution, Panel B at the 25th percentile, and Panel C looks at the overall gender wage gap at the mean. The first column is without any controls, which get added gradually in the following columns.  
+
+Since the dependent variable is the unadjusted gender wage gap in percent, the coefficients can be interpreted as  the percentage point change of the gender wage gap.
+
+% First panel: Strong reduction of gender wage gap
+Panel A ,which looks at the effect of the 10th percentile of the wage distribution, shows a large and highly significant decrease of the gender wage gap. 
+At the absence of controls in column (1), the effect in the treatment group is a reduction of 5.2 percentage points. This number is not the absolute reduction, but just the one relative to the low-bite areas, which in this column also exhibit a reduction in the wage gap of 3.6 percentage points.
+When adding controls the values become slightly smaller, but stay at the 1\% significance level. In column (6) the coefficient is still -4.6. Given a initial level of 14.4\% in the treatment area, this is equivalent to a reduction of 32\%.
+This is still in relation to the 2018 dummy, but here, it becomes insignificant. This suggests that for the lower incomes at the 10th percentile, the wage gap only decreased in the treatment regions, while it stagnated for the control regions.
+% First panel: Strong reduction of gender wage gap
+% explain percentage point and actual percentage decrease
+% 2018 dummy becomes insignificant
+This is still in relation to the 2018 dummy, but here, it becomes insignificant. This suggests that for the lower incomes at the 10th percentile, the wage gap only decreased in the treatment regions, while it stagnated for the control regions.
+
+% 25th percentile
+% significant, but smaller results.
+For the 
+% (c6) -18\% compared to the level in 2014 (which was at 18.3%)
+% Explain why result at the 25th percentile parts over 30 percent of affected women, compare figure 4
+% Additional increases for low payed employees expected (source?)
+
+% Mean
+
+% (c6) -2.3 ,  relative reduction of 11% 2014 level which was 20.4%)
+%  dummy negative -> general reduction, more in treatment group
+% Explain why result at the 25th percentile parts over 30 percent of affected women, compare figure 4
+Given that the minimum wage directly only affected a small fraction of women working (14.65\% earned less than 8.84€ in 2014), one might ask the question why there is an effect at the 25th percentile at all. There are two relevant explanations for that. 
+
+Spillover effect for incomes up to 12.50€ \citep{Dustman21Reallocation} 
+\subsection{Robustness, Validity and other fun stuff}
+
+
+
+
+% Why it is relevant for the scientific community (and the society?)
+% What is the contribution to the literature (can you go beyond what is mentioned by the authors themselves?)?
+% First to exclusively analyze question for germany germany
+
+
+% • Critically think about the internal and external validity of the paper.
+%internal validity
+%Common trend assumption is given
+%Quick summary of robustness checks
+
+% No further minimum wage increases can lead to deterioration of the reduction
+%Discussion of Employment effect
+% No dummy for Treatment group is used, doesn't show how far groups are apart, and which one has a larger gender pay gap.
+
+% External validity
+% Germany as an extreme case
+%Other countries 
+\section{Literature Content} %aim for 2 pages 
+
+
+\section{Connection to empirical project} %maybe only half a page, additional empirical discussion if time
+% Interesting future research with panel data effect on mothers
+%Maybe quote child penalty atlas
+%Future 
+
+\section{Conclusion}
+
+%Minimum wage with side-effect of Helping women
+% 
+%\clearpage
+\newpage
+\bibliography{QM_bib}
+% \bibliographystyle{harvard}
+\bibliographystyle{dcu}
+\end{document}

@@ -46,11 +46,21 @@ Jordan is a country in the heart of the Middle East and is home to approximately
 
 \subsection{Data}
 
-Once we had our dataset, we set out to create specific key variables adjusted for our analysis. Among these variables was "first-born boy (younger 16 years old)." However, we also experienced difficulties: situations where two children shared the same age and were the oldest in the household but had different sexes resulted in all children being labeled as sex==1 (girl). To resolve this, we implemented a solution in the do.file, ensuring accuracy in our data representation.
+Once we had our dataset, we set out to create specific key variables adjusted for our analysis. 
+Among these variables was "first-born boy (younger 16 years old)." 
+However, we also experienced difficulties: 
+situations where two children shared the same age and were the oldest in the household but had different sexes resulted in all children being labeled as sex==1 (girl). 
+To resolve this, we implemented a solution in the do.file, ensuring accuracy in our data representation.
 
-Building on the conditions outlined in the Ichino paper, we established criteria such as mothers being between 18-55 years old, the oldest child being smaller/equal 15 years old, and the first child being born between the mothers age of 18-40 years old. These limitations, provided by the authors, helped define the parameters of our analysis and ensured alignment with the Ichino study.
+Building on the conditions outlined in the Ichino paper, we established criteria such as mothers being between 18-55 years old, 
+the oldest child being smaller/equal 15 years old, and the first child being born between the mothers age of 18-40 years old. 
+These limitations, provided by the authors, helped define the parameters of our analysis and ensured alignment with the Ichino study.
 
-In addition to these criteria, we went a step further by generating numerous dummy variables. These served to simplify and enhance the logical use of data in our analysis. Notable examples include the "married" dummy variable, which replaced the previous five different status categories, and the "Employed” dummy variable, simplifying the representation of employment status into a binary (0=no and 1=yes). Furthermore, we implemented an age restriction to filter out illogical values, such as ages exceeding 150.
+In addition to these criteria, we went a step further by generating numerous dummy variables. 
+These served to simplify and enhance the logical use of data in our analysis. 
+Notable examples include the "married" dummy variable, which replaced the previous five different status categories, 
+and the "Employed” dummy variable, simplifying the representation of employment status into a binary (0=no and 1=yes). 
+Furthermore, we implemented an age restriction to filter out illogical values, such as ages exceeding 150.
 
 
 \subsection{Results}
@@ -62,7 +72,7 @@ In addition to these criteria, we went a step further by generating numerous dum
     \begin{tabularx}{\textwidth}{lXXXXX}
     \hline
                           & Mean   & Std.   & Min & Max & No. obs. \\ \hline
-    Employed              & 0.133  & 0.339  & 0   & 1   & 40,295   \\
+    Employed              & 0.135  & 0.339  & 0   & 1   & 40,295   \\
     Hours worked per week & 5.444  & 14.376 & 0   & 97  & 40,295   \\
     Age                   & 30.681 & 5.829  & 18  & 55  & 40,295   \\
     Married               & 0.976  & 0.155  & 0   & 1   & 40,295   \\
@@ -76,7 +86,7 @@ In addition to these criteria, we went a step further by generating numerous dum
     \label{tab:desc}
     \end{table}
 
-Table 1 shows the descriptive statistics for all the variables we used in our analysis. We have 40,305 mothers in our sample.
+Table 1 shows the descriptive statistics for all the variables we used in our analysis. We have 40,295 mothers in our sample.
 Noticeable values in the table are that only 13.5\% of mothers are working and accordingly the average hours worked per mother is only 5.
 The maximum working hours might seem high,
 but since only 1\% of employed mothers work more than 70 hours and there are reports of sweatshops in Jordan with up to 100h worked per week (Greenhouse and Barbaro, 2006) we deemed it plausible.

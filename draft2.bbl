@@ -1,5 +1,10 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Broadway \harvardand\ Wilkins}{2017}{Broadway2017AUS}
+Broadway, B. \harvardand\ Wilkins, R.  \harvardyearleft 2017\harvardyearright .
+\newblock Probing the effects of the australian system of minimum wages on the gender wage gap, {\em IZA Discussion Papers 11191}, Bonn.
+\newline\harvardurl{http://hdl.handle.net/10419/176995}
+
 \harvarditem{Caliendo \harvardand\ Wittbrodt}{2022}{CALIENDO22}
 Caliendo, M. \harvardand\ Wittbrodt, L.  \harvardyearleft 2022\harvardyearright .
 \newblock Did the minimum wage reduce the gender wage gap in germany?, {\em Labour Economics} {\bf 78}:~102228.
@@ -23,6 +28,11 @@ Greenhouse, S. \harvardand\ Barbaro, M.  \harvardyearleft 2006\harvardyearright 
 \harvarditem{Kahn}{2015}{kahn2015wage}
 Kahn, L.~M.  \harvardyearleft 2015\harvardyearright .
 \newblock Wage compression and the gender pay gap, {\em IZA World of Labor} .
+
+\harvarditem{Robinson}{2005}{Robinson05UK}
+Robinson, H.  \harvardyearleft 2005\harvardyearright .
+\newblock Regional evidence on the effect of the national minimum wage on the gender pay gap, {\em Regional Studies} {\bf 39}(7):~855--872.
+\newline\harvardurl{https://doi.org/10.1080/00343400500289820}
 
 \harvarditem{Stewart}{2012}{Stewart12Wage}
 Stewart, M.~B.  \harvardyearleft 2012\harvardyearright .

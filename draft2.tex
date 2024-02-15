@@ -134,7 +134,7 @@ This suggests that average characteristics are same for mothers despite gender o
 
     
     %  \noindent % otherwise the line will be too wide by \parindent
-    \begin{tabularx}{\textwidth}{lXlr}
+    \begin{tabularx}{\textwidth}{lXlc}
     
     \hline & \\[-1.0em]
     Hours worked per week & & Probability of working &  \\
@@ -168,10 +168,10 @@ But as noted, estimated effect of having a first-born boy instead of a girl in J
 
     
     %  \noindent % otherwise the line will be too wide by \parindent
-    \begin{tabularx}{\textwidth}{lXlr}
+    \begin{tabularx}{\textwidth}{lXlc}
     
     \hline & \\[-1.0em]
-    \multicolumn{2}{l}{Probability of having more than one child}  & Probability of being married &  \\
+    \multicolumn{2}{l}{Probability of having more than one child}  & \multicolumn{2}{l}{Probability of being married} \\
     \hline & \\[-1.0em]
         First-born boy & -0.013***  & First-born boy  & 0.001   \\
         St. err.       & 0.004      & St. err.        & 0.001   \\
@@ -240,7 +240,7 @@ Jordan is a predominantly Muslim country, and interpretations of Islamic teachin
 \section{Main Summary of Paper}
 % • What is the research question(s)?
 % • What is the main contribution?
-
+\subsection{Overview} \label{overview}
 
 The following section all summarizes the paper “Did the minimum wage reduce the gender wage gap in Germany?” by \citet{CALIENDO22}. It addresses the question if the minimum wage can have an effect on the gender wage gap. 
 The reason why this effect might appear is that women are in most countries and regions disproportionally represented among low paid workers \citep{kahn2015wage}.
@@ -433,8 +433,16 @@ The value at the 10th percentile stays significant the 10\% level for all regres
 
 % No further minimum wage increases can lead to deterioration of the reduction
 %Discussion of Employment effect
-% No dummy for Treatment group is used, doesn't show how far groups are apart, and which one has a larger gender pay gap.
+Another big issue the possible influence of the employment effect. 
+If the minimum wage leads to job losses for low-paid workers, and women are disproportional overrepresented in that group, job losses decrease the minimum wage gap. But this effect is unwanted, since it doesn't reduce the wage gap by raising women's wages, but by low-income women becoming unemployed and thus raising the average women's wage. 
+This possible chanel of reducing the gender wage gap is now further analyzed by \citet{CALIENDO22} citing that there are, if any, only small employment effects. But one of the cited papers for this, \citep{Caliendo2017short} adds that instead of unemployment, a reduction of working hours might be used.
+If employees have to reduce their working hours in response to the minimum wage, employees might get payed more per hour, but still earn the same or less overall.
+But this possible stagnation of overall income is not be accounted for her, since the gender pay gap is calculated by hourly wages.
+These effects should be examined in the future, since they might lead to an overestimation of the results, and are mainly neglected in the paper.
 
+
+% No dummy for Treatment group is used, doesn't show how far groups are apart, and which one has a larger gender pay gap.
+Like in \Cref{overview} mentioned, Germany is an extreme case, with gender pay gap initially more than double that of the EU average for the for the first decile. While this means that the magnitude of the effect would be lower in other countries, the effect should be the same for most counties where women are overrepresented at the lower end of the wage distribution. To additionally validate this, the next section compares the results of similar studies in different countries.
 % External validity
 % Germany as an extreme case
 %Other countries 
@@ -442,15 +450,7 @@ The value at the 10th percentile stays significant the 10\% level for all regres
 
 \section{Literature Content} %Aim for 1.5 pages 
 
-The effects of the Australian minimum wage system on the gender pay gap is studied by \citet{Broadway2017AUS}.
-Australia is a interesting country to compare to, since they do not only universal minimum wage, but additionally a complex system of occupation and industry based minimum wages, so called awards. Because of this system 24\% of the population are payed a minimum wage. 
-Since \Citet{CALIENDO22} showed that the minimum wage has a significant effect on the gender wage gap at the lower end of the distribution, the Australian system seems like a great way to use the effect to also reduce the wage gap higher up in the wage distribution. 
-Overall, occupations in the award systems have a lower gender wage gap than occupations not affected by it.
-But while the award system is binding for more women than men, meaning that overall more women profit from it, it also has negatives. \citeauthor{Broadway2017AUS} show in their paper that the award system assigns lower minimum wages to typical female low education jobs compared to typical male low education jobs.
-For those jobs, the award system might even increase the gender wage gap.
-Overall, while this system seems like a option to compress the wage distribution and reduce the wage gap even at higher income levels, it can also lead to additional wage differentials between men and women.
-
-Another interesting paper about the minimum wage effect on the gender wage gap is written by \citet{Robinson05UK}, studying the effect the national minimum wage in the UK has on the gender pay gap. The paper creates a theoretical model and discusses the prerequisites for the effect of the minimum wage on the gender pay gap. 
+A interesting paper about the minimum wage effect on the gender wage gap is written by \citet{Robinson05UK}, studying the effect the national minimum wage in the UK has on the gender pay gap. The paper creates a theoretical model and discusses the prerequisites for the effect of the minimum wage on the gender pay gap. 
 %rewrite sentence ->
 Not only do Women have to be disproportionally affected by the minimum wage but the average wage difference between the wage payed before and the minimum wage has to be also larger
 % <- rewrite sentence
@@ -462,12 +462,27 @@ In the main regression by \citet{CALIENDO22} the dummy was negative and the gend
 To show why this is the case in the UK, \Citeauthor{Robinson05UK} analyzes not only the fraction of women affected, but also how far the initial wages were below the minimum wage for men and women.
 
 
+The effects of the Australian minimum wage system on the gender pay gap is studied by \citet{Broadway2017AUS}.
+Australia is a interesting country to compare to, since they do not only universal minimum wage, but additionally a complex system of occupation and industry based minimum wages, so called awards. Because of this system 24\% of the population are payed a minimum wage. 
+Since \Citet{CALIENDO22} showed that the minimum wage has a significant effect on the gender wage gap at the lower end of the distribution, the Australian system seems like a great way to use the effect to also reduce the wage gap higher up in the wage distribution. 
+Overall, occupations in the award systems have a lower gender wage gap than occupations not affected by it.
+But while the award system is binding for more women than men, meaning that overall more women profit from it, it also has negatives. \citeauthor{Broadway2017AUS} show in their paper that the award system assigns lower minimum wages to typical female low education jobs compared to typical male low education jobs.
+For those jobs, the award system might even increase the gender wage gap.
+Overall, while this system seems like a option to compress the wage distribution and reduce the wage gap even at higher income levels, it can also lead to additional wage differentials between men and women.
+
+
+
+
+
 \section{Connection to empirical project} %maybe only half a page, additional empirical discussion if time
 % Interesting future research with panel data effect on mothers
 %Maybe quote child penalty atlas
+
+%factors affecting women labor force participation and pay
 %Future 
 
 \section{Conclusion}
+
 
 %Minimum wage with side-effect of Helping women
 % 

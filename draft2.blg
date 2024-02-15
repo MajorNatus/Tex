@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: draft2.aux
 The style file: dcu.bst
 Database file #1: QM_bib.bib
-You've used 4 entries,
+You've used 6 entries,
             2921 wiz_defined-function locations,
-            669 strings with 5441 characters,
-and the built_in function-call counts, 15987 in all, are:
-= -- 2596
-> -- 207
+            687 strings with 5841 characters,
+and the built_in function-call counts, 22253 in all, are:
+= -- 3610
+> -- 278
 < -- 0
-+ -- 1229
-- -- 63
-* -- 1376
-:= -- 3247
-add.period$ -- 8
-call.type$ -- 4
-change.case$ -- 56
-chr.to.int$ -- 4
-cite$ -- 4
-duplicate$ -- 55
-empty$ -- 123
-format.name$ -- 76
-if$ -- 2855
++ -- 1693
+- -- 84
+* -- 1899
+:= -- 4543
+add.period$ -- 13
+call.type$ -- 6
+change.case$ -- 84
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 82
+empty$ -- 181
+format.name$ -- 105
+if$ -- 3971
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 4
-newline$ -- 21
-num.names$ -- 41
-pop$ -- 9
+missing$ -- 6
+newline$ -- 32
+num.names$ -- 61
+pop$ -- 14
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 90
 quote$ -- 0
-skip$ -- 52
+skip$ -- 76
 stack$ -- 0
-substring$ -- 3666
-swap$ -- 7
-text.length$ -- 56
+substring$ -- 5069
+swap$ -- 10
+text.length$ -- 84
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 24
 warning$ -- 0
-while$ -- 88
+while$ -- 132
 width$ -- 0
-write$ -- 58
+write$ -- 88

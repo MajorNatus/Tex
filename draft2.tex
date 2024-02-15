@@ -396,6 +396,7 @@ Another reason is the spillover effect, meaning that an increase in the minimum 
 In a paper analyzing these spillover effects in the UK, \citet{Stewart12Wage} cites multiple reasons for this, like the continuity of existing wage differentials or higher reservation wages for certain jobs and sees the minimum wage as a general increase in the cost of low-skilled labor.
 For Germany, \citet{Dustman21Reallocation} find that spillover effects due to the minimum wage introduction effect initial wages up to 12.50€, which is just slightly below the median for women in 2014 of 12.54€ \citep[see][Table 1]{CALIENDO22}. 
 %Spillover effect for incomes up to 12.50€ \citep{Dustman21Reallocation} 
+
 % Mean
 At the mean (Panel C) the effects are reduced not only in magnitude, but also the significance reduces to the 5\% level. 
 Here the dummy for 2018 is significantly negative as well, so overall the gender wage gap shrunk between 2014 and 2018.
@@ -403,11 +404,8 @@ But even here, high-bite regions experience an additional decrease of 2.3 Percen
 % (c6) -2.3 ,  relative reduction of 11% 2014 level which was 20.4%)
 Note that this is the overall gender wage gap using the average wages of men and women, in contrast to the two upper panels which compare points on the wage distribution.
 %  dummy negative -> general reduction, more in treatment group
+
 \subsection{Robustness, Validity and other fun stuff}
-
-
-
-
 % Why it is relevant for the scientific community (and the society?)
 % What is the contribution to the literature (can you go beyond what is mentioned by the authors themselves?)?
 % First to exclusively analyze question for germany germany
@@ -416,7 +414,22 @@ Note that this is the overall gender wage gap using the average wages of men and
 % • Critically think about the internal and external validity of the paper.
 %internal validity
 %Common trend assumption is given
+Since the method used is a difference-in-differences approach, the key identifying assumption is that the control and treatment regions follow a similar trend in absence of the treatment.
+Here this would mean that without the introduction of the minimum wage,
+the change in gender wage gap would not significantly differ between the two groups.
+To verify that, authors look at the time before the introduction of the minimum wage and
+show that the gender wage gap followed the same trend for both groups.
+For this, they use the Structure of Earnings survey of 2010 and run the same analysis as for the main result,
+but for the 2010 - 2014 period. Since the survey changed the methodology between those years, they adjust the 2014 and 2018 datasets accordingly and additionally run the main regression between 2014 and 2018 again to verify the results.
+In this second regression, the interaction term is slightly smaller than in the main regression,
+and not significant at the mean. This is probably because the change removed small businesses from the Data, which tent to pay less, and so the changes disproportionally remove low income workers that might me affected by the minimum wage introduction. Besides that the results are pretty similar.
+For the period before the minimum wage introduction, the interaction term is insignificant for the 10th percentile, the 25th percentile as well as the mean. This reasonably fulfills the common trend assumption,
+although it is not ideal that the datasets used for it portray less significant coefficients than the main results.
+
 %Quick summary of robustness checks
+To additionally verify the results, the authors use a variety of robustness checks. 
+They use different bite measures to assign the treatment group, the bite as the original continuous fraction instead of assigning treatment groups and various other changes to the control variables, regions, and weightings.
+The value at the 10th percentile stays significant the 10\% level for all regressions, never becomes insignificant at the 25th percentile and only turns insignificant for one of the eight regressions at the median. 
 
 % No further minimum wage increases can lead to deterioration of the reduction
 %Discussion of Employment effect
@@ -425,7 +438,8 @@ Note that this is the overall gender wage gap using the average wages of men and
 % External validity
 % Germany as an extreme case
 %Other countries 
-\section{Literature Content} %aim for 2 pages 
+
+\section{Literature Content} %Aim for 1.5 pages 
 
 
 \section{Connection to empirical project} %maybe only half a page, additional empirical discussion if time

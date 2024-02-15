@@ -17,7 +17,12 @@
     
 \begin{titlepage}
 
-    \author{Moritz Trinkner \thanks {sad }}
+    \author{Moritz Trinkner \thanks {test}
+    \\ \\Empirical Part with:
+    \\ Nino Jokhadze
+    \\ Frederik Schwarz
+    \\ Leonhard Heinecke 
+    }
     \title{Seminar:\\ Quantitative Methoden}
     \date{February 2024}
 \end{titlepage}
@@ -31,6 +36,10 @@
 
 \section{Introduction}
 
+
+The first part of the paper is the empirical part where we replicated \Citet{ichino2014hidden}, which investigates the effect, the gender of the first born child has on fertility, marriage, and labor supply. We find, that in Jordan a first-born boy has no effect on labor supply or marriage, but has a negative effect on fertility. This is a contrast to the original paper, which finds that a first-born boy reduces labor supply, but increases the fertility and even the probability of being married for the mother.
+
+In the second part I summarize the findings of \Citet{CALIENDO22}, investigating the impact of the minimum wage in Germany on the gender wage gap. They find that it has a significant negative effect and reduces the gender wage gap up to 32\% for low-incomes. I then discuss the findings and compare them to other countries.
 \newpage
 \section{Empirical Part}
 \subsection{Introduction} 
@@ -245,20 +254,19 @@ Jordan is a predominantly Muslim country, and interpretations of Islamic teachin
 The following section all summarizes the paper “Did the minimum wage reduce the gender wage gap in Germany?” by \citet{CALIENDO22}. It addresses the question if the minimum wage can have an effect on the gender wage gap. 
 The reason why this effect might appear is that women are in most countries and regions disproportionally represented among low paid workers \citep{kahn2015wage}.
 This means that an increase in the minimum wage would affect women's average wages more than mens, leading to a decrease in the gender wage gap.
-The minimum wage is a national wage floor, that is binding for almost all employees. Germany is a special research case, since it was one of the last OECD countries to introduce a Minimum wage. 
+The minimum wage is a national wage floor, that is binding for almost all employees. Germany is a special research case, since it was one of the last OECD countries to introduce a Minimum wage.
 When it was introduced in 2015 at 8.50€ it was one of the highest in the EU in terms of purchasing power parity. It affected 10\% of the workforce, and 2/3 of those affected low income workers were women.  
-This strong increase makes Germany a great natural experiment to observe effects of the minimum wage, in this case the effect of the gender wage gap. 
+This strong increase makes Germany a great natural experiment to observe effects of the minimum wage, in this case the effect of the gender wage gap. The effect is even more pronounced given that Germany had a above OECD average gender pay gap, which was especially strong at the first decile of the income distribution.  Here the gap for was in 2014 with 18.7\% being more double of the EU average of 7.3\%. \citep{oecd}
 %Short preview of results in introduction
 %Detailed OECD Data from 2014 First Decile comparison to average
 % not a panel study
 
-The effect is even more pronounced given that Germany had a above OECD average gender pay gap, which was especially strong at the first decile of the income distribution. 
 \subsection{Data}
-The Data used is from a mandatory federal statistics survey called Structure of Earnings Survey (Verdienststrukturanalyse). 
-Add number of observations or stuff like that.
-It is held every four years, so the data used is from 2014 and 2018. Because of that the data includes the first increase of the minimum wage to 8.84€ in 2017.
+The Data used is from a mandatory federal statistics survey called Structure of Earnings Survey (Verdienststrukturanalyse), containing more than ond million observations.
+%Add number of observations or stuff like that.
+It is held every four years, so the data used is from 2014 and 2018. Because of that the time period includes the first increase of the minimum wage to 8.84€ in 2017. \Citeauthor{CALIENDO22} then calculate the hourly wages of the employees by using the hours worked and the monthly income. Additionally people like minors, for which the minimum wage does not apply are excluded. 
 %more on data and maybe transformation
-
+From the hourly wages, the gender pay gap is calculate in percent by using the difference between men's and women's wages. This is, additionally to the overall average wage gap also done for the 10th and 25th percentile of the wage distribution. These allow a more detailed analysis of the minimum wage effect on for low-income workers, where it directly affects the wages. The calculated wage gap here is the unadjusted wage gap, 
 %Does not include gender wage gap, calculated manually.
 
 \subsection{Method}
@@ -308,7 +316,7 @@ The Results displayed in \Cref{tab:main} are calculated at different points in t
     %\centering
     %\resizebox{\textwidth}{!}{%
     \begin{adjustbox}{width=\textwidth}
-    \begin{tabular}{l@{\hskip 10ex}llllll}
+    \begin{tabular}{lllllll}
     \hline & \\[-1.0em]
                               & (1)       & (2)       & (3)       & (4)       & (5)       & (6)       \\ 
     \hline & \\[-1.0em]
@@ -349,14 +357,16 @@ The Results displayed in \Cref{tab:main} are calculated at different points in t
     Observations              & 514       & 514       & 514       & 514       & 514       & 514       \\
     Groups                    & 257       & 257       & 257       & 257       & 257       & 257       \\
     \hline & \\[-1.0em]
-    \multicolumn{7}{l}{
-        \textsuperscript{***}$p < 0.01$, 
-        \textsuperscript{**}$p < 0.05$, 
-        \textsuperscript{*}$p < 0.1$     
-        Note: which adapts the 2014 and 2018 data to the st}
     \end{tabular}
     \end{adjustbox}
     %}
+    Reprinted from:
+        \citet[][Table 2]{CALIENDO22}
+        "Note:
+        \textsuperscript{***}$p < 0.01$, 
+        \textsuperscript{**}$p < 0.05$, 
+        \textsuperscript{*}$p < 0.1$     
+        The table displays the results of ﬁxed-eﬀects estimations in a diﬀerence-in-diﬀerence framework with region-ﬁxed eﬀects and robust standard errors clustered by region. The minimum wage bite is binary and the regions are the 257 Labour Market Regions. In Panel A the dependent variable is the unadjusted wage gap at the 10th percentile of the regional gender-speciﬁc wage distribution. Accordingly, in Panel B (C) the dependent variable is the gap at the 25th percentile (the mean). The reference year is 2014." 
 
     
     \label{tab:main}
@@ -448,8 +458,8 @@ Like in \Cref{overview} mentioned, Germany is an extreme case, with gender pay g
 %Other countries 
 
 
-\section{Literature Content} %Aim for 1.5 pages 
-
+\section{Further discussion} %Aim for 1.5 pages 
+\subsection{Country comparison}
 A interesting paper about the minimum wage effect on the gender wage gap is written by \citet{Robinson05UK}, studying the effect the national minimum wage in the UK has on the gender pay gap. The paper creates a theoretical model and discusses the prerequisites for the effect of the minimum wage on the gender pay gap. 
 %rewrite sentence ->
 Not only do Women have to be disproportionally affected by the minimum wage but the average wage difference between the wage payed before and the minimum wage has to be also larger
@@ -474,18 +484,21 @@ Overall, while this system seems like a option to compress the wage distribution
 
 
 
-\section{Connection to empirical project} %maybe only half a page, additional empirical discussion if time
+\subsection{Connection to empirical project} %maybe only half a page, additional empirical discussion if time
 % Interesting future research with panel data effect on mothers
 %Maybe quote child penalty atlas
-
+While the main paper focuses on th minimum wage introduction and its effect on the gender pay gap, the empirical part focuses on another topic: The female labor supply of women and how it is affected by the gender of the first born boy.
+At the first sight both the minimum wage as well as the gender of the first-born child seem to not have a strong effect on women. But to the contrary, both have significant effects. While the effect that a first-born boy has an effect of labor supply of the mother might seem negligible at first, it is interesting to study. The labor supply of women, and especially mothers is also influenced by the wages they can expect when working. Since mothers are more likely to work part time or have reduced experience, they are even more likely than the average women to be affected by a minimum wage. The wage floor can help here to create a even playing field and incentivize mothers to work. This effect of the minimum wage on the labor supply of mothers (and maybe even women in general) might be a topic to be studied in the future.
 %factors affecting women labor force participation and pay
 %Future 
 
 \section{Conclusion}
 
-
+Future research with adjusted wage gaps, effect on mothers, employment effects including involuntary reduction of working hours and australian system
+Since unions have a similar effect than industry based minimum wages, regulations that incentivize collective bargaining, especially for jobs with a predominantly female jobs, can additionally reduce the gender pay gap, even for occupations that pay above the minimum wage.
+other parts that help 
 %Minimum wage with side-effect of Helping women
-% 
+% future research employment effects.
 %\clearpage
 \newpage
 \bibliography{QM_bib}
